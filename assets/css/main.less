@@ -1,0 +1,63 @@
+.bordered(@color) when (iscolor(@color)) {
+	border: 1px solid @color;
+}
+.withMargin() {
+	margin: 3px;
+}
+.centered() {
+	display: table;
+	p {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+}
+
+.calculator {
+	.bordered(red);
+	width: 400px;
+	height: 600px;
+
+	#result {
+		.bordered(green);
+		.withMargin();
+		height: 50px;
+		font-weight: bold;
+		span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+
+	.numPad,
+	.functionPad {
+		.bordered(cyan);
+		.withMargin();
+		height: 100%;
+	}
+
+	.numPad {
+		width: 73%;
+		float: left;
+	}
+
+	.functionPad {
+		width: 23%;
+		float: right;
+	}
+
+	.numKey,
+	.functionKey {
+		.bordered(blue);
+		.withMargin();
+		.centered();
+		width: 30%;
+		height: 75px;
+		float: left;
+		cursor: pointer;
+
+		&.span3 {
+			width: 95%;
+		}
+	}
+}
