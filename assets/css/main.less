@@ -1,4 +1,9 @@
-.bordered(@color) when (iscolor(@color)) {
+@font-size: 40;
+@total-width: 400;
+@numPad-width: (@total-width * .73);
+@funcPad-width: (@total-width * .23);
+
+.bordered(@color) /*when (iscolor(@color))*/ {
 	border: 1px solid @color;
 }
 .withMargin() {
@@ -10,54 +15,58 @@
 		display: table-cell;
 		vertical-align: middle;
 		text-align: center;
+		font-size: @font-size;
 	}
 }
 
 .calculator {
-	.bordered(red);
-	width: 400px;
-	height: 600px;
+	.bordered(black);
+	width: unit(@total-width, px);
+	height: 397px;
 
 	#result {
-		.bordered(green);
+		.bordered(black);
 		.withMargin();
 		height: 50px;
 		font-weight: bold;
+		font-size: @font-size;
 		span {
+			.withMargin();
 			display: inline-block;
-			vertical-align: middle;
+			vertical-align: middle;	
 		}
 	}
 
 	.numPad,
 	.functionPad {
-		.bordered(cyan);
 		.withMargin();
-		height: 100%;
 	}
 
 	.numPad {
-		width: 73%;
+		width: unit(@numPad-width, px);
 		float: left;
 	}
 
 	.functionPad {
-		width: 23%;
+		width: unit(@funcPad-width, px);
 		float: right;
 	}
 
-	.numKey,
-	.functionKey {
-		.bordered(blue);
+	.key {
+		.bordered(black);
 		.withMargin();
 		.centered();
-		width: 30%;
+		width: 87px;
 		height: 75px;
 		float: left;
 		cursor: pointer;
 
+		&.span2 {
+			width: 181px;
+		}
+
 		&.span3 {
-			width: 95%;
+			width: 277px;
 		}
 	}
 }
