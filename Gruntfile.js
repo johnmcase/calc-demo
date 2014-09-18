@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		jshint: {
-			all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js']
+			all: ['Gruntfile.js', 'scripts/**/*.js', 'spec/**/*.js']
 		},
 		less: {
 			development: {
@@ -23,6 +23,11 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		bower: {
+			target: {
+				rjsConfig: 'scripts/config.js'
+			}
+		},
 		watch: {
 			scripts: {
 				files: '**/*.js',
@@ -30,7 +35,7 @@ module.exports = function(grunt) {
 			},
 			css: {
 				files: 'assets/css/**/*.less',
-				tasks: ['dev']
+				tasks: ['less:development']
 			}
 		},
 		notify_hooks: {
@@ -53,6 +58,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-notify');
+	grunt.loadNpmTasks('grunt-bower-requirejs');
 
 
 	grunt.task.run('notify_hooks');
